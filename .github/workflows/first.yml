@@ -1,8 +1,8 @@
 name: Project2 Workflow
 on:
-  pull_request:
-    types:   # repository_dispatch,schedule,workflow_call,workflow_dispatch
-      - opened # activity type
+  #pull_request:
+  #  types:   # repository_dispatch,schedule,workflow_call,workflow_dispatch
+  #    - opened # activity type
   workflow_dispatch:
 jobs:
   lint:
@@ -28,6 +28,13 @@ jobs:
         run: npm run test
       - name: build
         run: npm run build
+      - name: upload-artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: |
+            dist
+            package.json
       - name: deployment
         run: echo "deploying..."
 
