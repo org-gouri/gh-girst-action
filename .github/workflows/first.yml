@@ -41,5 +41,7 @@ jobs:
         run: npm run test
       - name: build
         run: npm run build
+      - name: deployment
+        run: echo "deploying..."
 
        # run: echo "${{ toJSON(github) }}"
