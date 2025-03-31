@@ -3,7 +3,7 @@ on: push    # repository_dispatch,schedule,workflow_call,workflow_dispatch
 
 jobs:
   lint:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Get code from repo to agent pool will use
         uses: actions/checkout@v3
@@ -13,7 +13,7 @@ jobs:
         run: npm run lint
   deploy:
     needs: lint
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Get code from repo to agent pool will use
         uses: actions/checkout@v3
