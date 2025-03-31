@@ -3,7 +3,20 @@ on:
   pull_request:
     types:   # repository_dispatch,schedule,workflow_call,workflow_dispatch
       - opened # activity type
+    branches: #only push to the below branches will trigger
+      - main #main
+      - 'dev-*' # dev-new (any thing insingle *)
+      - 'feat/**' # feat/new, feat/new/button
   workflow_dispatch:
+  push:   # events and event filters example
+    branches: #only push to the below branches will trigger
+      - main #main
+      - 'dev-*' # dev-new (any thing insingle *)
+      - 'feat/**' # feat/new, feat/new/button
+    #paths-ignore: # we need to give path and if some files moodified or changed then in above branches even it will not trigger
+    paths:
+      - '.github/workflows/*'
+
 jobs:
   lint:
     runs-on: ubuntu-latest
