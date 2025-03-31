@@ -1,14 +1,9 @@
 name: First Workflow
-on: workflow_dispatch
+on: push    # repository_dispatch,schedule,workflow_call,workflow_dispatch
 
 jobs:
   firstjob:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: print greetings 
-        run: echo "good day!"
-      - name: linux cmd's
-        run: |
-            ls
-            pwd
-            ps
+        run: echo "${{ toJSON(github) }}"
