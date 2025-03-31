@@ -1,9 +1,28 @@
-name: First Workflow
+name: Project2 Workflow
 on: push    # repository_dispatch,schedule,workflow_call,workflow_dispatch
 
 jobs:
-  firstjob:
-    runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu:latest
     steps:
-      - name: print greetings 
-        run: echo "${{ toJSON(github) }}"
+      - name: Get code from repo to agent pool will use
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: lint
+        run: npm run lint
+  deploy:
+    runs-on: ubuntu:latest
+    steps:
+      - name: Get code from repo to agent pool will use
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: lint
+        run: npm run lint
+      - name: test
+        run: npm run test
+      - name: build
+        run: npm run build
+
+       # run: echo "${{ toJSON(github) }}"
