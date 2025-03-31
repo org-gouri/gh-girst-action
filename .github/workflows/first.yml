@@ -52,6 +52,16 @@ jobs:
             package.json
       - name: deployment
         run: echo "deploying..."
+  download:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+    
+  
 
        # run: echo "${{ toJSON(github) }}"
 
