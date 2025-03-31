@@ -1,6 +1,9 @@
 name: Project2 Workflow
-on: push    # repository_dispatch,schedule,workflow_call,workflow_dispatch
-
+on:
+  pull_request:
+    types:   # repository_dispatch,schedule,workflow_call,workflow_dispatch
+      - opened # activity type
+  workflow_dispatch:
 jobs:
   lint:
     runs-on: ubuntu-latest
